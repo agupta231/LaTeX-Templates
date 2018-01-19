@@ -1,6 +1,16 @@
-\documentclass[10pt]{wpi_resume}
+\documentclass[10pt]{extarticle}
 
-\usepackage[margin=0.5in]{geometry}
+\pagenumbering{gobble}
+
+\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage{titling}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{datetime}
+\usepackage{xstring}
+\usepackage{textcomp}
+\usepackage{changepage}
 
 % ========== Configs ===========
 
@@ -10,22 +20,100 @@
 \date{\today}
 
 % Address config
-\newcommand{\addr}{100 Institute Road, Box# 4234}
+\newcommand{\addr}{100 Institute Road, Box 4234}
 \newcommand{\city}{Worcester, MA 01609}
 
-\newcommand{\phone_num}{(978) 973-4251}
+\newcommand{\phonenum}{(978) 973-4251}
+
 \newcommand{\email}{agupta4@wpi.edu}
+
 \newcommand{\github}{github.com/agupta231}
 \newcommand{\website}{ankurgupta.info}
 \newcommand{\linkedin}{linkedin.com/in/agupta628}
 
 % ========= Fomatting ==========
+
+% Title formatting 
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
 \renewcommand{\maketitle}{
-    \par{\centering{\Huge \textsc{\theauthor}} \par}
+    \begin{table}
+        \begin{tabularx}{\textwidth}{l Y r}
+            \addr     & \multirow{2}{*}{
+                \Huge{\textsc{\theauthor}}} & \github \\
+            \city     &                     & \website \\
+            \phonenum & \email              & \linkedin
+        \end{tabularx}
+    \end{table}
 }
 
+% Section Formatting
 
-% ========= Document Starts Now =========
-\begin{document}
-    \maketitle
-\end{document}
+\titleformat{\section}{\large\scshape\raggedright}{}{1em}{}[\titlerule]
+\titlespacing{\section}{5pt}{3pt}{5pt}
+\titleformat{\subsection}{\large\sc\centering}{}{0em}{\underline}
+\titlespacing{\subsection}{0pt}{7pt}{7pt}
+
+
+% Entry Formatting
+
+\newcommand{\resumedate}[2]{
+    \IfStrEqCase{#1}{
+        {Jan} {Jan}
+        {Feb} {Feb}
+        {Mar} {March}
+        {Apr} {April}
+        {May} {May}
+        {Jun} {June}
+        {Jul} {July}
+        {Aug} {Aug}
+        {Sep} {Sept}
+        {Oct} {Oct}
+        {Nov} {Nov}
+        {Dec} {Dec}
+    } [nada]
+    `\StrRight{0000\number\numexpr#2}{2}\relax
+}
+
+\newcommand{\eduentry}[5]{
+    \begin{adjustwidth}{1em}{0pt}
+        \begin{flushleft}
+            {\bf #1}, #2 \hfill #3 - #4 \par 
+        \end{flushleft}
+    \end{adjustwidth}
+
+    \begin{adjustwidth}{1.5em}{0pt}
+        \begin{flushleft}
+            #5
+        \end{flushleft}
+    \end{adjustwidth}
+}
+
+\newcommand{\workentry}[6]{
+    \begin{adjustwidth}{1em}{0pt}
+        {\bf #1}, \textit{#2}, #3 \hfill #4 - #5 \par 
+    \end{adjustwidth}
+
+    \begin{adjustwidth}{1.5em}{0pt}
+        \begin{flushleft}
+            #6
+        \end{flushleft}
+    \end{adjustwidth}
+}
+
+\newcommand{\listentry}[2]{
+    \begin{adjustwidth}{1em}{0pt}
+        \begin{flushleft}
+            {\bf #1}: #2 
+        \end{flushleft}
+    \end{adjustwidth}
+}
+
+\newcommand{\expentry}[5]{
+    \begin{adjustwidth}{1em}{0pt}
+        \begin{flushleft}
+            {\bf #1}, #2, #3 \hfill #4 - #5
+        \end{flushleft}
+    \end{adjustwidth}
+    }
