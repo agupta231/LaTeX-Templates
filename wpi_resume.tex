@@ -35,11 +35,13 @@
 
 % Title formatting 
 
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
 \renewcommand{\maketitle}{
     \begin{table}
-        \begin{tabularx}{\textwidth}{l Y r}
+        \begin{tabularx}{\textwidth}{L C R}
             \addr     & \multirow{2}{*}{
                 \Huge{\textsc{\theauthor}}} & \github \\
             \city     &                     & \website \\
