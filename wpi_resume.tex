@@ -1,5 +1,6 @@
 \documentclass[10pt]{extarticle}
 
+
 % ========= Page Modifications
 \pagenumbering{gobble}
 
@@ -34,6 +35,8 @@
     \end{table}
 }
 
+\setlength{\textfloatsep}{0.15cm}
+
 % Section Formatting
 
 \titleformat{\section}{\large\scshape\raggedright}{}{1em}{}[\titlerule]
@@ -59,7 +62,8 @@
         {Nov} {Nov}
         {Dec} {Dec}
     } [nada]
-    `\StrRight{0000\number\numexpr#2}{2}\relax
+    % `\StrRight{0000\number\numexpr#2}{2}\relax
+    #2
 }
 
 \newcommand{\eduentry}[5]{
@@ -88,6 +92,18 @@
     \end{adjustwidth}
 }
 
+\newcommand{\projentry}[5]{
+    \begin{adjustwidth}{1em}{0pt}
+        {\bf #1}, \textit{#2} \hfill #3 - #4 \par 
+    \end{adjustwidth}
+
+    \begin{adjustwidth}{1.5em}{0pt}
+        \begin{flushleft}
+            #5
+        \end{flushleft}
+    \end{adjustwidth}
+}
+
 \newcommand{\listentry}[2]{
     \begin{adjustwidth}{1em}{0pt}
         \begin{flushleft}
@@ -102,4 +118,4 @@
             {\bf #1}, #2, #3 \hfill #4 - #5
         \end{flushleft}
     \end{adjustwidth}
-    }
+}
